@@ -1,21 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Display from './Display';
+import Form from './Form';
+import {Button, List} from 'antd';
 
-function App() {
+const App: React.FC = () => {
+  const [displayList, setDisplayList] = useState(false);
+  const [displayForm, setDisplayForm] = useState(false);
+
+  const handleDisplayListClick = () => {
+    setDisplayList(true);
+    setDisplayForm(false);
+  };
+
+  const handleAddNewItemClick = () => {
+    setDisplayList(false);
+    setDisplayForm(true);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Welcome to the Task.
-          Try not to over engineer the solution.
-          After Finishing Upload it to Github and send us the Repo Link.
-        </p>
-        
-      </header>
+    <div className='bg-color'>
+      <div className='App'>
+        <Button onClick={handleDisplayListClick}>Display List</Button>
+        <Button onClick={handleAddNewItemClick}>Add New Donation Item</Button>
+      </div>
+      {displayList && <Display />}
+      {displayForm && <Form />}
     </div>
   );
-}
+};
 
 export default App;
