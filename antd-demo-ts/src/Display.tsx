@@ -93,11 +93,11 @@ function Display() {
           {items.map((item) => (
             <List>
               <h2>{item.name}</h2>
-              <p>Reference: {item.reference?.type.id} {item.reference?.type.prefix}</p>
-              <p>Price: {item.price ? `${item.price.amount} ${item.price.currency.symbol}` : 'N/A'}</p>
-              <p>Status: {item.status?.name || 'N/A'}</p>
-              <p>Location: {item.location?.name || 'N/A'}</p>
-              <p>Theme: {item.theme?.name || 'N/A'}</p>
+              <p>Reference: {item.reference ? item.reference.type.id + ' ' + item.reference.type.prefix : 'N/A'}</p>
+              <p>Price: {item.price ? `£${item.price.amount} ${item.price.currency.symbol}` : 'N/A'}</p>
+              <p>Status: {item.status ? item.status.name : 'N/A'}</p>
+              <p>Location: {item.location ? item.location.name : 'N/A'}</p>
+              <p>Theme: {item.theme ? item.theme.name : 'N/A'}</p>
             </List>
           ))}
         </ul>
